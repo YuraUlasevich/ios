@@ -10,7 +10,10 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
+    ViewController *vc = [[ViewController alloc] init];
+    [self.window setRootViewController:vc];
     self.window.backgroundColor = [UIColor whiteColor];
+    [vc release];
     [self.window makeKeyAndVisible];
     return YES;
 }
@@ -42,5 +45,10 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+- (void)dealloc
+{
+    [_window release];
+    [super dealloc];
+}
 
 @end
